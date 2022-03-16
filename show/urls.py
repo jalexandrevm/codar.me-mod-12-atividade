@@ -1,3 +1,5 @@
+from agenda.views import acesso_raiz, exibir_evento, participar_evento
+
 """show URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,4 +20,7 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("", acesso_raiz, name="acesso_raiz"),
+    path("eventos/<int:id>/", exibir_evento, name="exibir_evento"),
+    path("participar/", participar_evento, name="participar_evento"),
 ]
