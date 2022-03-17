@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <table>
+    <thead>
+      <tr>
+        {% comment %} <th>Id</th> {% endcomment %}
+        <th>Nome</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cat in categorias  %}
+      <tr>
+        {% comment %} <td>{{ cat.id }}</td> {% endcomment %}
+        <td>{{ cat.nome }}</td>
+        <td><a href="{% url 'exibir_categoria' cat.id %}">Ver detalhes</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <html></html>
+</html>

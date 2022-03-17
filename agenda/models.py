@@ -6,7 +6,14 @@ class Categoria(models.Model):
         max_length=60,
         unique=True,
     )
-
+    @classmethod
+    def cria_categoria(cls, nome):
+        if nome and nome != "":
+            cat = Categoria(nome=nome)
+            cat.save()
+            return cat
+        else:
+            raise ValueError("Precisa ter um nome válido.")
     def __str__(self) -> str:
         return f"{self.id} {self.nome}"
 
@@ -34,4 +41,12 @@ class Evento(models.Model):
     participantes = models.IntegerField(default=0)
     def __str__(self) -> str:
         return f"{self.id} {self.nome}"
+    @classmethod
+    def cria_evento(cls, nome, categ, local, link, data):
+        if ((local and not link) or (not local and link)):
+            ev = Evento(nome=nome, categoria=categ, local=local, link=link, data_evento=data)
+            ev.save()
+            return ev
+        else:
+            raise ValueError("Evento não pode possuir local e link.")
 

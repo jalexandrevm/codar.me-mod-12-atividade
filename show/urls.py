@@ -1,4 +1,3 @@
-from agenda.views import acesso_raiz, exibir_evento, participar_evento
 
 """show URL Configuration
 
@@ -17,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from agenda.views import acesso_raiz, exibir_evento, participar_evento, listar_categorias, exibir_categoria
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", acesso_raiz, name="acesso_raiz"),
     path("eventos/<int:id>/", exibir_evento, name="exibir_evento"),
+    path("categorias/<int:id>/", exibir_categoria, name="exibir_categoria"),
+    path("categorias/", listar_categorias, name="listar_categorias"),
     path("participar/", participar_evento, name="participar_evento"),
 ]
