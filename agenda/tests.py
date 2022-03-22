@@ -49,6 +49,7 @@ class TestListagemEventosSemData(TestCase):
         cliente = Client()
         response = cliente.get("/")
         self.assertContains(response, "Aula de Python")
+        self.assertContains(response, "A definir")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context["eventos"][0], self.evento)
         self.assertIn(self.evento, list(response.context["eventos"]))
